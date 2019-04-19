@@ -8,6 +8,8 @@ import {provideModuleMap} from '@nguniversal/module-map-ngfactory-loader';
 import * as express from 'express';
 import {join} from 'path';
 
+import { Twitch } from './server/app'
+
 // Faster server renders w/ Prod mode (dev mode never needed)
 enableProdMode();
 
@@ -39,7 +41,7 @@ app.get('*.*', express.static(DIST_FOLDER, {
 }));
 
 // All regular routes use the Universal engine
-app.get('*', (req, res) => {
+app.get('*', async (req, res) => {
   res.render('index', { req });
 });
 
@@ -47,3 +49,5 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Node Express server listening on http://localhost:${PORT}`);
 });
+
+ new Twitch()
