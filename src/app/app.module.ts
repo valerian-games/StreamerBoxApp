@@ -5,6 +5,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './_core/auth.service'
 
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +24,7 @@ import { RedirectComponent } from './_routes/redirect/redirect.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [AuthService],
