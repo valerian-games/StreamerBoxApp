@@ -10,11 +10,13 @@ import { AuthService } from './_core/auth.service'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { RedirectComponent } from './_routes/redirect/redirect.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    RedirectComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
