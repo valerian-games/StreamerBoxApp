@@ -3,15 +3,14 @@ jobs:
   build:
     branches:
       ignore:
-        - develop
         - /feature-.*/
     docker:
       - image: circleci/node:11.9.0
-      
+
     steps:
       - checkout
 
-      - run:  npm i -g firebase-tools
+      - run: sudo npm i -g firebase-tools
 
       - restore_cache:
           keys:
