@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../_core/auth.service'
+import { FirestoreService } from '../_core/firestore.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  games: {}[]
 
-  ngOnInit() {
+  constructor(
+    private auth: AuthService,
+    private firestore: FirestoreService,
+    private router: Router
+  ) { }
+
+  async ngOnInit() {
+    this.games = await this.firestore.games
+  }
+
+  signOut() {
+    this.auth.signOut()
+    this.router.navigate(['/'])
   }
 
 }

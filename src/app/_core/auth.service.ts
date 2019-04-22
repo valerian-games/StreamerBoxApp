@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,10 @@ export class AuthService {
 
   signInWithTwitch() {
     window.location.href = "https://us-central1-valerian-games-dev.cloudfunctions.net/oAuthRedirect";
-  
+
   }
   async customSignIn(token: string) {
-    await this.afAuth.auth.signInWithCustomToken(token).then(() => {
-      window.close()
-      
-    } )
+    await this.afAuth.auth.signInWithCustomToken(token)
     this.router.navigate(['/dashboard']);
   }
 
@@ -29,4 +27,9 @@ export class AuthService {
   signOut() {
     this.afAuth.auth.signOut()
   }
+
+  isLoggedIn() {
+    return this.afAuth.authState.pipe(first()).toPromise();
+  }
+
 }
