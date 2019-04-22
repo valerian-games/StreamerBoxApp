@@ -13,8 +13,7 @@
         Games
       </p>
       <ul class="menu-list">
-        <li><a [routerLink]="['/dashboard/game', '01']" routerLinkActive="is-active">Game 01</a></li>
-        <li><a [routerLink]="['/dashboard/game', '02']" routerLinkActive="is-active">Game 02</a></li>
+        <li *ngFor="let game of games"><a [routerLink]="['/dashboard/game', game.id]" routerLinkActive="is-active">{{ game.name }}</a></li>
       </ul>
       <p class="menu-label">
         Preferences
