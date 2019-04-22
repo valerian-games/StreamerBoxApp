@@ -16,10 +16,7 @@ export class AuthService {
 
   }
   async customSignIn(token: string) {
-    await this.afAuth.auth.signInWithCustomToken(token).then(() => {
-      window.close()
-
-    })
+    await this.afAuth.auth.signInWithCustomToken(token)
     this.router.navigate(['/dashboard']);
   }
 
