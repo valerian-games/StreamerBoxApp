@@ -6,23 +6,23 @@
         General
       </p>
       <ul class="menu-list">
-        <li><a [routerLink]="['/dashboard']" routerLinkActive="is-active" >Dashboard</a></li>
-        <li><a [routerLink]="['/s']" routerLinkActive="is-active">Commands</a></li>
+        <li><a [routerLink]="['/dashboard']" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a></li>
+        <li><a [routerLink]="['/dashboard/commands']" routerLinkActive="is-active">Commands</a></li>
       </ul>
       <p class="menu-label">
         Games
       </p>
       <ul class="menu-list">
-        <li><a [routerLink]="['/s']" routerLinkActive="is-active">Game 01</a></li>
-        <li><a [routerLink]="['/s']" routerLinkActive="is-active">Game 02</a></li>
+        <li><a [routerLink]="['/dashboard/game', '01']" routerLinkActive="is-active">Game 01</a></li>
+        <li><a [routerLink]="['/dashboard/game', '02']" routerLinkActive="is-active">Game 02</a></li>
       </ul>
       <p class="menu-label">
         Preferences
       </p>
       <ul class="menu-list">
-        <li><a [routerLink]="['/s']" routerLinkActive="is-active">Account</a></li>
-        <li><a [routerLink]="['/s']" routerLinkActive="is-active">Settings</a></li>
-        <li><a [routerLink]="['/s']" routerLinkActive="is-active">Sign Out</a></li>
+        <li><a [routerLink]="['/dashboard/account']" routerLinkActive="is-active">Account</a></li>
+        <li><a [routerLink]="['/dashboard/settings']" routerLinkActive="is-active">Settings</a></li>
+        <li><a >Sign Out</a></li>
       </ul>
     </aside>
 
