@@ -27,4 +27,4 @@ jobs:
       - run: echo $SERVICE_ACCOUNT | base64 --decode > ${HOME}/serviceAccountKey.json
       - run: npm run build:ssr 
       - run: npm run build
-      - run: npm run firebse-hosting-deploy
+      - run: npm run firebse-hosting-deploy 
