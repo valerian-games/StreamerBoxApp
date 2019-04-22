@@ -1,0 +1,38 @@
+<section class="hero is-info is-fullheight">
+
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-6 is-offset-3">
+          <div *ngIf="!showError;else errorMsg">
+            <h1 class="title">We got your token</h1>
+            <h2 class="subtitle">
+              <small>It's a sensetive information. Do not show on stream</small>
+            </h2>
+
+            <br>
+
+            <a class="button is-primary" (click)="showToken()">Show Token</a>
+
+            <pre *ngIf="show">
+              {{ code }}
+            </pre>
+          </div>
+
+          <ng-template #errorMsg>
+            <h1 class="title">You cancelled the request
+
+              <br>
+
+              <small>
+                Please try again
+              </small>
+            </h1>
+
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
