@@ -23,8 +23,8 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: echo $SERVICE_ACCOUNT | base64 --decode > ${HOME}/serviceAccountKey.json
-      - run: echo $ENV | base64 --decode > ${HOME}/env.json
+      - run: echo $SERVICE_ACCOUNT | base64 --decode > /home/circleci/project/serviceAccountKey.json
+      - run: echo $ENV | base64 --decode > /home/circleci/project/env.json
       - run: npm run build:ssr 
       - run: npm run build
       - run: npm run firebse-hosting-deploy 
