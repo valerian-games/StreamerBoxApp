@@ -12,6 +12,7 @@
     "compile:server": "webpack --config webpack.server.config.js --progress --colors",
     "serve:ssr": "node dist/server",
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
+    "firebse-hosting-deploy": "./node_modules/.bin/firebase deploy --only hosting --token=$FIREBASE_TOKEN",
     "build:client-and-server-bundles": "ng build --prod && ng run StreamerBoxApp:server:production"
   },
   "private": true,
