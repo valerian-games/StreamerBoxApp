@@ -9,7 +9,7 @@
         <li><a [routerLink]="['/dashboard']" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a></li>
         <li><a [routerLink]="['/dashboard/commands']" routerLinkActive="is-active">Commands</a></li>
       </ul>
-      <p class="menu-label">
+      <p class="menu-label" *ngIf="games">
         Games
       </p>
       <ul class="menu-list">
