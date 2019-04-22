@@ -1,0 +1,20 @@
+.columns {
+    height: 100%;
+}
+
+.menu {
+    margin-top: 1em;
+    
+    .menu-label {
+        margin-left: 1em;
+    }
+
+    .menu-list {
+        margin-left: 1.3em;
+
+        a {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    }
+}

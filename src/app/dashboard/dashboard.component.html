@@ -1,3 +1,33 @@
-<p>
-  dashboard works!
-</p>
+<div class="columns is-gapless">
+  <div class="column is-3 is-primary-bg">
+
+    <aside class="menu">
+      <p class="menu-label">
+        General
+      </p>
+      <ul class="menu-list">
+        <li><a [routerLink]="['/dashboard']" routerLinkActive="is-active" >Dashboard</a></li>
+        <li><a [routerLink]="['/s']" routerLinkActive="is-active">Commands</a></li>
+      </ul>
+      <p class="menu-label">
+        Games
+      </p>
+      <ul class="menu-list">
+        <li><a [routerLink]="['/s']" routerLinkActive="is-active">Game 01</a></li>
+        <li><a [routerLink]="['/s']" routerLinkActive="is-active">Game 02</a></li>
+      </ul>
+      <p class="menu-label">
+        Preferences
+      </p>
+      <ul class="menu-list">
+        <li><a [routerLink]="['/s']" routerLinkActive="is-active">Account</a></li>
+        <li><a [routerLink]="['/s']" routerLinkActive="is-active">Settings</a></li>
+        <li><a [routerLink]="['/s']" routerLinkActive="is-active">Sign Out</a></li>
+      </ul>
+    </aside>
+
+  </div>
+  <div class="column is-info-bg has-text-white">
+    <router-outlet></router-outlet>
+  </div>
+</div>
