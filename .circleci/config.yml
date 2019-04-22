@@ -3,7 +3,6 @@ jobs:
   build:
     branches:
       ignore:
-        - master
         - develop
         - /feature-.*/
     docker:
