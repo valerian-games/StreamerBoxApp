@@ -12,12 +12,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { RedirectComponent } from './_routes/redirect/redirect.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashComponent } from './dashboard/dash/dash.component';
+import { CommandsComponent } from './dashboard/commands/commands.component';
+import { AccountComponent } from './dashboard/account/account.component';
+import { SettingsComponent } from './dashboard/settings/settings.component';
+import { GameComponent } from './dashboard/game/game.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    RedirectComponent
+    RedirectComponent,
+    DashboardComponent,
+    DashComponent,
+    CommandsComponent,
+    AccountComponent,
+    SettingsComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

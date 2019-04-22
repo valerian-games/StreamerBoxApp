@@ -12,6 +12,8 @@ import { from, Observable } from 'rxjs';
 })
 export class RedirectComponent implements OnInit {
 
+  showError = false
+
   constructor(private http: HttpClient
     , private route: ActivatedRoute
     , private auth: AuthService) { }
@@ -19,6 +21,7 @@ export class RedirectComponent implements OnInit {
   async ngOnInit() {
     const code = this.route.snapshot.queryParamMap.get('code')
     const error = this.route.snapshot.queryParamMap.get('error')
+    const error_description = this.route.snapshot.queryParamMap.get('error_description')
 
     if (code) {
       const url = `https://us-central1-valerian-games-dev.cloudfunctions.net/token?code=${code}`;
@@ -28,8 +31,9 @@ export class RedirectComponent implements OnInit {
       ).subscribe()
     }
 
-    if (error) {
-      this.auth.closeWindow()
-    }
+    if (error) 
+      this.showError = true
+    else 
+      this.showError = false
   }
 }
