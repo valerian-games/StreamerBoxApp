@@ -7,12 +7,11 @@ jobs:
         - /feature-.*/
     docker:
       - image: circleci/node:11.9.0
-
-    before_install:
-      - 'npm i -g firebase-tools'
-
+      
     steps:
       - checkout
+
+      - run:  npm i -g firebase-tools
 
       - restore_cache:
           keys:
