@@ -8,6 +8,9 @@ jobs:
     docker:
       - image: circleci/node:11.9.0
 
+    before_install:
+      - 'npm i -g firebase-tools'
+
     steps:
       - checkout
 
