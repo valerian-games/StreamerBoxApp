@@ -19,6 +19,7 @@ import { CommandsComponent } from './dashboard/commands/commands.component';
 import { AccountComponent } from './dashboard/account/account.component';
 import { SettingsComponent } from './dashboard/settings/settings.component';
 import { GameComponent } from './dashboard/game/game.component';
+import { UnityComponent } from './_routes/unity/unity.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { GameComponent } from './dashboard/game/game.component';
     CommandsComponent,
     AccountComponent,
     SettingsComponent,
-    GameComponent
+    GameComponent,
+    UnityComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
