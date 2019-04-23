@@ -1,3 +1,20 @@
-<p>
-  commands works!
-</p>
+<div class="columns is-mobile is-multiline">
+  <div class="column is-6" *ngFor="let command of commands">
+    <div class="box">
+      <article class="media">
+        <div class="media-content">
+          <div class="content">
+            <h1 class="title is-5 has-text-white">{{ command.command }}</h1>
+            <h2 class="subtitle is-6 has-text-grey-lighter">Created By @{{ command.createdBy }}</h2>
+            <p>
+              {{ command.description }} Effective games
+              <span class="tag" *ngFor="let game of command.games" [routerLink]="['/dashboard/game', game]">
+                {{ game }}
+              </span>
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>

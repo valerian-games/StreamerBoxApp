@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirestoreService } from '../../_core/firestore.service'
 
 @Component({
   selector: 'app-commands',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommandsComponent implements OnInit {
 
-  constructor() { }
+  commands: {}[]
 
-  ngOnInit() {
+  constructor(
+    private firestore: FirestoreService
+  ) { }
+
+  async ngOnInit() {
+    this.commands = await this.firestore.commands
   }
 
 }
