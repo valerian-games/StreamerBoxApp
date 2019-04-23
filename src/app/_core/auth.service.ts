@@ -32,4 +32,7 @@ export class AuthService {
     return this.afAuth.authState.pipe(first()).toPromise();
   }
 
+  get uid() {
+    return this.afAuth.user.pipe(first()).toPromise().then(e => e.uid)
+  }
 }
