@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FirestoreService } from '../../_core/firestore.service'
+import { AuthService } from '../../_core/auth.service'
 
 @Component({
   selector: 'app-commands',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommandsComponent implements OnInit {
 
-  constructor() { }
+  commands: {}[]
+  yourCommands: {}[]
+  showYourCommands = false
 
-  ngOnInit() {
+  constructor(
+    private firestore: FirestoreService,
+    private auth: AuthService
+  ) { }
+
+  async ngOnInit() {
+    this.commands = await this.firestore.commands
+    this.yourCommands = await this.firestore.commandsBy(await this.auth.uid)
+    
+    if (this.yourCommands.length > 0)
+      this.showYourCommands = true
   }
 
 }

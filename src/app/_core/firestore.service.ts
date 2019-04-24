@@ -15,4 +15,12 @@ export class FirestoreService {
   get games() {
     return this.afs.collection('games').valueChanges().pipe(first()).toPromise()
   }
+
+  get commands() {
+    return this.afs.collection('commands', ref => ref.orderBy('command', 'desc')).valueChanges().pipe(first()).toPromise()
+  }
+
+  commandsBy(uid: string) {
+    return this.afs.collection('commands', ref => ref.where('createdBy', '==', uid).orderBy('command', 'desc')).valueChanges().pipe(first()).toPromise()
+  }
 }

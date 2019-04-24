@@ -1,3 +1,65 @@
-<p>
-  commands works!
-</p>
+<div class="commands">
+  <div class="columns is-vcentered">
+    <div class="column">
+      <h1 class="title">Your Commands</h1>
+      <h2 class="subtitle">You created these commands</h2>
+    </div>
+    <div class="column is-3">
+      <a class="button is-primary is-rounded is-pulled-right">Create Command</a>
+    </div>
+  </div>
+
+
+
+  <div class="columns is-mobile is-multiline is-variable is-2" *ngIf="showYourCommands; else emptyYourCommands">
+    <div class="column is-6" *ngFor="let command of yourCommands">
+      <div class="box">
+        <article class="media">
+          <div class="media-content">
+            <div class="content">
+              <h1 class="title is-5 has-text-white">{{ command.command }}</h1>
+              <h2 class="subtitle is-6 has-text-grey-lighter">Created By @{{ command.createdBy }}</h2>
+              <p>
+                {{ command.description }} Effective games
+                <span class="tag" *ngFor="let game of command.games" [routerLink]="['/dashboard/game', game]">
+                  {{ game }}
+                </span>
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #emptyYourCommands>
+    <p>
+      You don't have commands. Click <a>here</a> to create one.
+    </p>
+    <br>
+  </ng-template>
+
+  <h1 class="title">Default Commands</h1>
+  <h2 class="subtitle">Default game commands created by admins</h2>
+
+  <div class="columns is-mobile is-multiline is-variable is-2">
+    <div class="column is-6" *ngFor="let command of commands">
+      <div class="box">
+        <article class="media">
+          <div class="media-content">
+            <div class="content">
+              <h1 class="title is-5 has-text-white">{{ command.command }}</h1>
+              <h2 class="subtitle is-6 has-text-grey-lighter">Created By @{{ command.createdBy }}</h2>
+              <p>
+                {{ command.description }} Effective games
+                <span class="tag" *ngFor="let game of command.games" [routerLink]="['/dashboard/game', game]">
+                  {{ game }}
+                </span>
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
