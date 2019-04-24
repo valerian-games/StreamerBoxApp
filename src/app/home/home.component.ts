@@ -9,9 +9,15 @@ import { AuthService } from '../_core/auth.service'
 })
 export class HomeComponent implements OnInit {
 
+  loggedIn = false
+
   constructor(public auth: AuthService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    let hey = await this.auth.isLoggedIn()
+    
+    if (hey != null)
+      this.loggedIn = true
   }
 
 }

@@ -11,7 +11,11 @@
 
           <br>
 
-          <a class="button is-info sign-in-twitch" (click)="auth.signInWithTwitch()">Sign In With Twitch</a>
+          <a *ngIf="!loggedIn;else goDash" class="button is-info sign-in-twitch" (click)="auth.signInWithTwitch()">Sign
+            In With Twitch</a>
+          <ng-template #goDash>
+            <a class="button is-info sign-in-twitch" [routerLink]="['/dashboard']">Go to Dashboard</a>
+          </ng-template>
         </div>
       </div>
     </div>
