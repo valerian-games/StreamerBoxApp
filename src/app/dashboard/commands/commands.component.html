@@ -5,11 +5,56 @@
       <h2 class="subtitle">You created these commands</h2>
     </div>
     <div class="column is-3">
-      <a class="button is-primary is-rounded is-pulled-right">Create Command</a>
+      <a class="button is-primary is-rounded is-pulled-right" (click)="showAddCommand = true">Create Command</a>
     </div>
   </div>
 
+  <div *ngIf="showAddCommand" class="columns is-variable is-1 is-vcentered">
+    <div class="column">
+      <div class="field has-addons has-addons-centered">
+        <p class="control">
+          <span class="select">
+            <select>
+              <option>?</option>
+              <option>!</option>
+              <option>$</option>
+            </select>
+          </span>
+        </p>
+        <p class="control is-expanded">
+          <input class="input" type="text" placeholder="Command">
+        </p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="field">
+        <div class="control">
+          <textarea class="textarea" placeholder="Description" rows="2"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="field has-addons">
+        <div class="control is-expanded">
+          <div class="select is-fullwidth">
+            <select #select name="country">
+              <option *ngFor="let game of games" [value]="game.id">{{ game.name }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="control">
+          <button type="submit" class="button is-primary" (click)="addTag(select.value)">Add</button>
+        </div>
+      </div>
 
+      <div class="tags are-medium">
+        <span *ngFor="let game of gameTags" class="tag">
+          {{ game.name }}
+          <button class="delete is-small" (click)="removeTag(game)"></button>
+        </span>
+      </div>
+    </div>
+  </div>
 
   <div class="columns is-mobile is-multiline is-variable is-2" *ngIf="showYourCommands; else emptyYourCommands">
     <div class="column is-6" *ngFor="let command of yourCommands">
@@ -34,7 +79,7 @@
 
   <ng-template #emptyYourCommands>
     <p>
-      You don't have commands. Click <a>here</a> to create one.
+      You don't have commands. Click <a (click)="showAddCommand = true">here</a> to create one.
     </p>
     <br>
   </ng-template>
