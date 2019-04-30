@@ -1,5 +1,5 @@
 <div class="commands">
-  <div class="columns is-vcentered">
+  <!-- <div class="columns is-vcentered">
     <div class="column">
       <h1 class="title">Your Commands</h1>
       <h2 class="subtitle">You created these commands</h2>
@@ -9,50 +9,58 @@
     </div>
   </div>
 
-  <div *ngIf="showAddCommand" class="columns is-variable is-1 is-vcentered">
-    <div class="column">
-      <div class="field has-addons has-addons-centered">
-        <p class="control">
-          <span class="select">
-            <select>
-              <option>?</option>
-              <option>!</option>
-              <option>$</option>
-            </select>
-          </span>
-        </p>
-        <p class="control is-expanded">
-          <input class="input" type="text" placeholder="Command">
-        </p>
-      </div>
-    </div>
-    <div class="column">
+
+  <div *ngIf="showAddCommand" [formGroup]="commandForm" class="columns">
+    <div class="column is-4 ">
       <div class="field">
         <div class="control">
-          <textarea class="textarea" placeholder="Description" rows="2"></textarea>
+          <input class="input" type="text" placeholder="Command Name" required formControlName="command">
         </div>
+        <p class="help" *ngIf="command.invalid && (command.dirty || command.touched)">
+          
+          <ng-template *ngIf="command.errors.required">
+              Command is required.
+          </ng-template>
+          <ng-template *ngIf="command.errors.minlength">
+            Command must be at least 3 characters long.
+          </ng-template>
+        </p>
       </div>
-    </div>
-    <div class="column">
-      <div class="field has-addons">
-        <div class="control is-expanded">
-          <div class="select is-fullwidth">
-            <select #select name="country">
+      <div class="field">
+        <div class="control">
+          <div class="select">
+            <select required formControlName="games">
+              <option disabled>Select Game</option>
               <option *ngFor="let game of games" [value]="game.id">{{ game.name }}</option>
             </select>
           </div>
         </div>
+        <p class="help">This username is available</p>
+      </div>
+      <div class="field">
         <div class="control">
-          <button type="submit" class="button is-primary" (click)="addTag(select.value)">Add</button>
+          <textarea class="textarea" placeholder="Decription" required formControlName="description"></textarea>
         </div>
+        <p class="help">This username is available</p>
       </div>
 
-      <div class="tags are-medium">
-        <span *ngFor="let game of gameTags" class="tag">
-          {{ game.name }}
-          <button class="delete is-small" (click)="removeTag(game)"></button>
-        </span>
-      </div>
+      <div *ngIf="command.invalid && command.dirty" class="notification is-danger">
+          {{ command.value }} is already taken
+          {{ command.errors.commandAvailable }}
+        </div>
+        
+        <div *ngIf="command.valid" class="notification is-success">
+          {{ command.value }} is available
+        </div>
+        
+        <div *ngIf="command.pending" class="notification is-info">
+          Hold tight... Checking availability of {{ command.value }}
+        </div>
+
+        <p *ngIf="description">
+            {{ description.errors.required }}
+        </p>
+      <a class="button is-primary">Create Command</a>
     </div>
   </div>
 
@@ -78,11 +86,11 @@
   </div>
 
   <ng-template #emptyYourCommands>
-    <p>
+    <p *ngIf="!showAddCommand">
       You don't have commands. Click <a (click)="showAddCommand = true">here</a> to create one.
     </p>
     <br>
-  </ng-template>
+  </ng-template> -->
 
   <h1 class="title">Default Commands</h1>
   <h2 class="subtitle">Default game commands created by admins</h2>

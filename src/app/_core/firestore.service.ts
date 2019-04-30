@@ -23,4 +23,8 @@ export class FirestoreService {
   commandsBy(uid: string) {
     return this.afs.collection('commands', ref => ref.where('createdBy', '==', uid).orderBy('command', 'desc')).valueChanges().pipe(first()).toPromise()
   }
+
+  searchCommands(commands: string) {
+    return this.afs.collection('commands', ref => ref.where('command', '==', commands))
+  }
 }

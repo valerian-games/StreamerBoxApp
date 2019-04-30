@@ -4,4 +4,9 @@
     .tag {
         cursor: pointer;
     }
+
+    select,
+    .select {
+        width: 100% !important;
+    }
 }
